@@ -17,12 +17,14 @@ while restart==0:
     print("\nPROGRAM TO DEDUCE THE SQUARE ROOT OF A NUMBER")
     while True:
         try:
-            x = float(input("\nEnter a number you want to get the square root of: "))
-            print(f"You choose the number {x}. I'm glad, this is a valid input.")
-            break
+            x = float(input("\nEnter a positive number you want to get the square root of: "))
+            if x>=0:
+                print(f"You choose the number {x}. I'm glad, this is a valid input.")
+                break
+            else:
+                print("It is not possible to get a square root of a negative number.")
         except ValueError:
             print("Try again and enter a valid number, please.\n")
-        
     g = 1
     flag=0
     while flag==0:
@@ -31,7 +33,14 @@ while restart==0:
             flag=1
             square_root = g
             print(f"\nThe rough square root of {x} is {square_root:.5f}.\n")
-            restart=int(input("0 - Restart\n1 - Quit\n"))
-           
+            while True:
+                try:
+                    restart=int(input("0 - Restart\n1 - Quit\n"))
+                    if restart==0 or restart==1:
+                        break
+                    else:
+                        print("Use only '0' or '1' to choose.\n")
+                except ValueError:
+                    print("Use only '0' or '1' to choose.\n")
         else:
             g = np.mean([g,(x/g)])
