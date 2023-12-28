@@ -17,14 +17,23 @@ while restart==0:
     while True:
         try:
             radius = float(input("Enter the radius of the circle: "))
-            print(f"You choose the radius {radius}. I'm glad, this is a valid input.")
-            break
+            if radius >= 0:
+                print(f"You choose the radius {radius}. I'm glad, this is a valid input.")
+                break
+            else:
+                print("The radius value can't be negative.\n")
         except ValueError:
-            print("Try again and enter a valid raius, please.\n")
+            print("Try again and enter a valid radius, please.\n")
         
     # Area of circle equation 
     circle_area = math.pi*(radius**2)
     print(f"The area of a circle of radius {radius} is roughly {circle_area:.3f}.\n")
-    restart=int(input("0 - Restart\n1 - Quit\n"))
-    
-    
+    while True:
+        try:
+            restart=int(input("0 - Restart\n1 - Quit\n"))
+            if restart==0 or restart==1:
+                break
+            else:
+                print("Use only '0' or '1' to choose.\n")
+        except ValueError:
+            print("Use only '0' or '1' to choose.\n")
